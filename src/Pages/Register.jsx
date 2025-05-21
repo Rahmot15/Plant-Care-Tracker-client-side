@@ -1,16 +1,34 @@
-import React from "react";
+import React, { use } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
+import { AuthContext } from "../Provider/AuthContext";
 
 const Register = () => {
+  const { createUser, signInGoogle } = use(AuthContext);
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+    console.log(data);
 
-    const handleRegister = () => {
+    createUser(data.email, data.password)
+      .then((result) => {
+        console.log(result);
+      })
+      .then((error) => {
+        console.log(error);
+      });
+  };
 
-    }
-
-    const handleGoogleLogIn = () => {
-
-    }
+  const handleGoogleLogIn = () => {
+    signInGoogle()
+      .then((result) => {
+        console.log(result);
+      })
+      .then((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
@@ -118,7 +136,10 @@ const Register = () => {
                   At least one uppercase letter
                 </p>
 
-                <button type="submit" className="inline-flex items-center justify-center rounded-lg bg-green-600 md:py-3 py-2 md:px-5 px-3 font-dm text-base font-medium text-white shadow-xl shadow-green-400/30 transition-transform duration-200 ease-in-out hover:scale-[1.02]">
+                <button
+                  type="submit"
+                  className="inline-flex items-center justify-center rounded-lg bg-green-600 md:py-3 py-2 md:px-5 px-3 font-dm text-base font-medium text-white shadow-xl shadow-green-400/30 transition-transform duration-200 ease-in-out hover:scale-[1.02]"
+                >
                   CREATE ACCOUNT
                 </button>
 

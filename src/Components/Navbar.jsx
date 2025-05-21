@@ -1,6 +1,7 @@
 import React from "react";
 import { CgProfile } from "react-icons/cg";
-import { Link, Links, NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
+import { AuthContext } from "../Provider/AuthContext";
 
 const Navbar = () => {
   const link = (
@@ -82,7 +83,9 @@ const Navbar = () => {
 
           <Link to={"/"} className="flex items-center">
             <img className="md:w-14 w-8" src="/logo.png" alt="" />
-            <h1 className="md:text-4xl text-2xl bg-gradient-to-r from-emerald-500 to-green-800 bg-clip-text  text-transparent font-bold">Plants</h1>
+            <h1 className="md:text-4xl text-2xl bg-gradient-to-r from-emerald-500 to-green-800 bg-clip-text  text-transparent font-bold">
+              Plants
+            </h1>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -90,7 +93,10 @@ const Navbar = () => {
         </div>
         <div className="navbar-end space-x-3">
           <CgProfile size={45} />
-          <Link to={'/auth/login'} className="inline-flex items-center justify-center rounded-lg bg-green-600 md:py-3 py-2 md:px-5 px-3 font-dm text-base font-medium text-white shadow-xl shadow-green-400/30 transition-transform duration-200 ease-in-out hover:scale-[1.02]">
+          <Link
+            to={"/auth/login"}
+            className="inline-flex items-center justify-center rounded-lg bg-green-600 md:py-3 py-2 md:px-5 px-3 font-dm text-base font-medium text-white shadow-xl shadow-green-400/30 transition-transform duration-200 ease-in-out hover:scale-[1.02]"
+          >
             Login
           </Link>
         </div>

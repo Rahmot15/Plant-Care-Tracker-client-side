@@ -1,19 +1,25 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
+import { AuthContext } from "../Provider/AuthContext";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+
 
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email, password);
+
+    
   };
 
-  const handleGoogleLogin = () => {};
+  const handleGoogleLogin = () => {
+    
+  };
 
   return (
     <div className="relative min-h-screen -mt-16">
@@ -117,7 +123,10 @@ const Login = () => {
                   Forgot password?
                 </Link>
               </div>
-              <button type="submit" className="inline-flex items-center justify-center rounded-lg bg-green-600 md:py-3 py-2 md:px-5 px-3 font-dm text-base font-medium text-white shadow-xl shadow-green-400/30 transition-transform duration-200 ease-in-out hover:scale-[1.02]">
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center rounded-lg bg-green-600 md:py-3 py-2 md:px-5 px-3 font-dm text-base font-medium text-white shadow-xl shadow-green-400/30 transition-transform duration-200 ease-in-out hover:scale-[1.02]"
+              >
                 Login
               </button>
 
