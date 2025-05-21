@@ -2,7 +2,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="relative  -mt-10">
+    <div className="relative md:-mt-28 -mt-10">
       <div className="absolute inset-0 z-0 bg-[url('https://i.ibb.co/BK5J0gWk/Get-Paid-Stock-com-682ccbe677d7c.jpg')] bg-cover bg-center filter blur-md "></div>
       <div className="absolute inset-0 z-0  bg-opacity-40"></div>
 
