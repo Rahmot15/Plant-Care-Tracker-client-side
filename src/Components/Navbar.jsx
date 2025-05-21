@@ -1,6 +1,6 @@
 import React from "react";
 import { CgProfile } from "react-icons/cg";
-import { Link, NavLink } from "react-router";
+import { Link, Links, NavLink } from "react-router";
 
 const Navbar = () => {
   const link = (
@@ -90,9 +90,9 @@ const Navbar = () => {
         </div>
         <div className="navbar-end space-x-3">
           <CgProfile size={45} />
-          <button className="inline-flex items-center justify-center rounded-lg bg-green-600 md:py-3 py-2 md:px-5 px-3 font-dm text-base font-medium text-white shadow-xl shadow-green-400/30 transition-transform duration-200 ease-in-out hover:scale-[1.02]">
+          <Link to={'/auth/login'} className="inline-flex items-center justify-center rounded-lg bg-green-600 md:py-3 py-2 md:px-5 px-3 font-dm text-base font-medium text-white shadow-xl shadow-green-400/30 transition-transform duration-200 ease-in-out hover:scale-[1.02]">
             Login
-          </button>
+          </Link>
         </div>
       </div>
     </div>
