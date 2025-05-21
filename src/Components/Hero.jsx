@@ -15,7 +15,7 @@ const Hero = () => {
                 <h2 className="text-2xl lg:text-6xl font-bold text-yellow-500">
                   Aloe Vera
                 </h2>
-                <p className="text-gray-900 text-sm lg:text-xl md:font-semibold">
+                <p className="md:text-gray-900 text-pink-600 text-sm lg:text-xl md:font-semibold">
                   Aloe Vera is a perennial succulent plant widely known for its medicinal properties. The gel inside its leaves has antibacterial, anti-inflammatory, and cooling effects, making it a natural remedy for skin irritation, burns, and sunburns. Aloe loves sunlight and is easy to care for, making it a great addition to kitchens, balconies, or sunny windowsills.
                 </p>
                 <button className="btn btn-primary transition-transform duration-300 hover:scale-110 hover:shadow-xl">
@@ -49,7 +49,7 @@ const Hero = () => {
                 <h2 className="text-2xl lg:text-5xl font-bold text-yellow-500">
                   Tulip plants
                 </h2>
-                <p className="text-gray-900 text-sm lg:text-xl md:font-semibold">
+                <p className="md:text-gray-900 text-pink-600 text-sm lg:text-xl md:font-semibold">
                   Tulips are seasonal flowering plants cherished worldwide for their vibrant, cup-shaped blooms. They usually bloom in spring and are often grown in gardens or pots. Tulips come in a variety of colors, each symbolizing different emotions—red for love, yellow for friendship, white for peace. Though they require well-drained soil and cool climates, their stunning flowers make them a favorite among gardening enthusiasts.
                 </p>
                 <button className="btn btn-secondary transition-transform duration-300 hover:scale-110 hover:shadow-xl">
@@ -82,7 +82,7 @@ const Hero = () => {
                 <h2 className="text-2xl lg:text-5xl font-bold text-yellow-500">
                   Snake Plant
                 </h2>
-                <p className="text-gray-900 text-sm lg:text-xl md:font-semibold">
+                <p className="md:text-gray-900 text-pink-600 text-sm lg:text-xl md:font-semibold">
                   The Snake Plant is a popular indoor plant known for its striking appearance and easy maintenance. It can survive in low light and requires very little water. This plant is excellent at purifying indoor air by absorbing harmful toxins like formaldehyde and benzene. It's an ideal choice for offices or busy lifestyles where minimal care is preferred.
                 </p>
                 <button className="btn btn-accent transition-transform duration-300 hover:scale-110 hover:shadow-xl">

@@ -4,6 +4,10 @@ import Home from "../Pages/Home";
 import AllPlants from "../Pages/AllPlants";
 import AddPlants from "../Pages/AddPlants";
 import MyPlants from "../Pages/MyPlants";
+import NotFound from "../Pages/NotFound";
+import Login from "../Pages/Login";
+import Register from "../Pages/Register";
+import AuthLayout from "../Layout/AuthLayout";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +29,24 @@ export const router = createBrowserRouter([
       {
         path: "/myPlants",
         Component: MyPlants,
+      },
+    ],
+  },
+  {
+    path: "*",
+    Component: NotFound,
+  },
+  {
+    path: "/auth",
+    Component: AuthLayout,
+    children: [
+      {
+        path: "/auth/login",
+        Component: Login
+      },
+      {
+        path: "/auth/register",
+        Component: Register
       },
     ],
   },
