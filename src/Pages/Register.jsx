@@ -8,10 +8,10 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
-    console.log(data);
+    const {email,password, ...userProfile} = Object.fromEntries(formData.entries());
+    console.log(email,password,userProfile);
 
-    createUser(data.email, data.password)
+    createUser(email, password)
       .then((result) => {
         console.log(result);
       })

@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { use, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
@@ -7,6 +7,7 @@ import { AuthContext } from "../Provider/AuthContext";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
+  const { signInUser, signInGoogle } = use(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -14,11 +15,23 @@ const Login = () => {
     const password = e.target.password.value;
     console.log(email, password);
 
-    
+    signInUser(email, password)
+      .then((result) => {
+        console.log(result);
+      })
+      .then((error) => {
+        console.log(error);
+      });
   };
 
   const handleGoogleLogin = () => {
-    
+    signInGoogle()
+      .then((result) => {
+        console.log(result);
+      })
+      .then((error) => {
+        console.log(error);
+      });
   };
 
   return (

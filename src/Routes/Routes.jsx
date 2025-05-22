@@ -8,6 +8,7 @@ import NotFound from "../Pages/NotFound";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import AuthLayout from "../Layout/AuthLayout";
+import PlantsTableDetails from "../Components/PlantsTableDetails";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/allPlants",
+        loader: () => fetch('http://localhost:3000/plants'),
         Component: AllPlants,
       },
       {
@@ -29,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path: "/myPlants",
         Component: MyPlants,
+      },
+      {
+        path: "/plantDetails",
+        Component: PlantsTableDetails,
       },
     ],
   },

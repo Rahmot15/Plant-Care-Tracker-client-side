@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AllPlants = () => {
+const PlantsTableDetails = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const AllPlants = () => {
   );
 };
 
-export default AllPlants;
+export default PlantsTableDetails;
