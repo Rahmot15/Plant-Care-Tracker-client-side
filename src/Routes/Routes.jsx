@@ -33,7 +33,8 @@ export const router = createBrowserRouter([
         Component: MyPlants,
       },
       {
-        path: "/plantDetails",
+        path: "/plantDetails/:id",
+        loader: ({params}) => fetch(`http://localhost:3000/plants/${params.id}`),
         Component: PlantsTableDetails,
       },
     ],

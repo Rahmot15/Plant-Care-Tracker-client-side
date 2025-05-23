@@ -52,8 +52,8 @@ const AllPlants = () => {
                 </td>
                 <td> {plant.Category} </td>
                 <th>
-                  <Link to={"/plantDetails"}>
-                    <button className="btn btn-info  ">Vew details</button>
+                  <Link to={`/plantDetails/${plant._id}`}>
+                    <button className="btn btn-info  ">View details</button>
                   </Link>
                 </th>
               </tr>
