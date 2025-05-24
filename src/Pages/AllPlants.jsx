@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLoaderData } from "react-router";
 
 const AllPlants = () => {
-  const initialPlants = useLoaderData();
-  const [plants, setPlants] = useState(initialPlants);
+  const plants = useLoaderData();
   console.log(plants);
 
   return (

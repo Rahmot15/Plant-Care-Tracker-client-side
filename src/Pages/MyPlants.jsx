@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import { MdDelete, MdEdit } from "react-icons/md";
 import Swal from "sweetalert2";
 
@@ -28,9 +28,9 @@ const MyPlants = () => {
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            if (data.deletedCount) {
-              const remainingPlant = plants.filter(plant => plant._id !== id)
-              setPlants(remainingPlant)
+            if (data.deletedCount > 0) {
+              const remainingPlant = plants.filter((plant) => plant._id !== id);
+              setPlants(remainingPlant);
 
               Swal.fire({
                 title: "Deleted!",
@@ -96,9 +96,11 @@ const MyPlants = () => {
                 <td> {plant.Category} </td>
                 <th>
                   <div className="card-actions  gap-3">
-                    <button className="btn  btn-primary">
-                      <MdEdit size={20} />
-                    </button>
+                    <Link to={`/updatePlant/${plant._id}`}>
+                      <button className="btn  btn-primary">
+                        <MdEdit size={20} />
+                      </button>
+                    </Link>
                     <button
                       onClick={() => handleDelete(plant._id)}
                       className="btn  btn-primary"

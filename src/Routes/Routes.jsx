@@ -9,6 +9,7 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import AuthLayout from "../Layout/AuthLayout";
 import PlantsTableDetails from "../Components/PlantsTableDetails";
+import UpdatePlant from "../Pages/UpdatePlant";
 
 export const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/allPlants",
-        loader: () => fetch('http://localhost:3000/plants'),
+        loader: () => fetch("http://localhost:3000/plants"),
         Component: AllPlants,
       },
       {
@@ -30,13 +31,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myPlants",
-        loader: () => fetch('http://localhost:3000/plants'),
+        loader: () => fetch("http://localhost:3000/plants"),
         Component: MyPlants,
       },
       {
         path: "/plantDetails/:id",
-        loader: ({params}) => fetch(`http://localhost:3000/plants/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/plants/${params.id}`),
         Component: PlantsTableDetails,
+      },
+      {
+        path: "/updatePlant/:id",
+        loader: ({params}) => fetch(`http://localhost:3000/plants/${params.id}`),
+        Component: UpdatePlant,
       },
     ],
   },
@@ -50,11 +57,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/auth/login",
-        Component: Login
+        Component: Login,
       },
       {
         path: "/auth/register",
-        Component: Register
+        Component: Register,
       },
     ],
   },
