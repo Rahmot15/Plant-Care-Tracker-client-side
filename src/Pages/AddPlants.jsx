@@ -14,7 +14,7 @@ const AddPlants = () => {
     const newPlant = Object.fromEntries(formData.entries());
     console.log(newPlant);
 
-    fetch("http://localhost:3000/plants", {
+    fetch("https://plant-server-side-iceeeflhw-rahmatullahs-projects-5d1688dc.vercel.app/plants", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

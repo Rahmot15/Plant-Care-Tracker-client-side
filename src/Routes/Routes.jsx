@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/allPlants",
-        loader: () => fetch("http://localhost:3000/plants"),
+        loader: () => fetch("https://plant-server-side-iceeeflhw-rahmatullahs-projects-5d1688dc.vercel.app/plants"),
         Component: AllPlants,
       },
       {
@@ -31,18 +31,18 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myPlants",
-        loader: () => fetch("http://localhost:3000/plants"),
+        loader: () => fetch("https://plant-server-side-iceeeflhw-rahmatullahs-projects-5d1688dc.vercel.app/plants"),
         Component: MyPlants,
       },
       {
         path: "/plantDetails/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/plants/${params.id}`),
+          fetch(`https://plant-server-side-iceeeflhw-rahmatullahs-projects-5d1688dc.vercel.app/plants/${params.id}`),
         Component: PlantsTableDetails,
       },
       {
         path: "/updatePlant/:id",
-        loader: ({params}) => fetch(`http://localhost:3000/plants/${params.id}`),
+        loader: ({params}) => fetch(`https://plant-server-side-iceeeflhw-rahmatullahs-projects-5d1688dc.vercel.app/plants/${params.id}`),
         Component: UpdatePlant,
       },
     ],

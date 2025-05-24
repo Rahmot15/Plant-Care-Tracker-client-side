@@ -1,13 +1,16 @@
 import React, { use, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
+import { toast, ToastContainer } from "react-toastify";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-
   const { signInUser, signInGoogle } = use(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -18,9 +21,36 @@ const Login = () => {
     signInUser(email, password)
       .then((result) => {
         console.log(result);
+        const loginInfo = {
+          email,
+          lastSignInTime: result.user?.metadata?.lastSignInTime,
+        };
+        fetch("https://plant-server-side-iceeeflhw-rahmatullahs-projects-5d1688dc.vercel.app/users", {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(loginInfo),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.matchedCount) {
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Login successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+
+            navigate(location.state || "/");
+          });
       })
       .then((error) => {
         console.log(error);
+        toast.error("Login failed: " + error.message);
       });
   };
 
@@ -28,9 +58,11 @@ const Login = () => {
     signInGoogle()
       .then((result) => {
         console.log(result);
+        navigate(location.state || "/");
       })
       .then((error) => {
         console.log(error);
+        toast.error("Login failed: " + error.message);
       });
   };
 
@@ -142,6 +174,7 @@ const Login = () => {
               >
                 Login
               </button>
+              <ToastContainer />
 
               <h1 className="my-5 text-xl text-center">Or login with</h1>
 

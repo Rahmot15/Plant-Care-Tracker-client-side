@@ -1,22 +1,56 @@
 import React, { use } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import {  Link, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
+import Swal from "sweetalert2";
+import { toast, ToastContainer } from "react-toastify";
 
 const Register = () => {
   const { createUser, signInGoogle } = use(AuthContext);
+  const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const {email,password, ...userProfile} = Object.fromEntries(formData.entries());
-    console.log(email,password,userProfile);
+    const { email, password, ...restFormData } = Object.fromEntries(
+      formData.entries()
+    );
+    console.log(email, password, restFormData);
 
     createUser(email, password)
       .then((result) => {
         console.log(result);
+        const userProfile = {
+          email,
+          ...restFormData,
+          creationTime: result.user?.metadata?.creationTime,
+          lastSignInTime: result.user?.metadata?.lastSignInTime
+        }
+        fetch("https://plant-server-side-iceeeflhw-rahmatullahs-projects-5d1688dc.vercel.app/users", {
+
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userProfile),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.insertedId) {
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+            navigate("/");
+          });
       })
       .then((error) => {
         console.log(error);
+        toast.warning("Register failed: " + error.message);
       });
   };
 
@@ -24,6 +58,7 @@ const Register = () => {
     signInGoogle()
       .then((result) => {
         console.log(result);
+        navigate("/");
       })
       .then((error) => {
         console.log(error);
@@ -142,6 +177,7 @@ const Register = () => {
                 >
                   CREATE ACCOUNT
                 </button>
+                <ToastContainer/>
 
                 <h1 className="my-5 text-xl text-center">Or sign up with</h1>
 
