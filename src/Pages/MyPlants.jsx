@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router";
 import { MdDelete, MdEdit } from "react-icons/md";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthContext";
 
 const MyPlants = () => {
   const initialPlants = useLoaderData();
   const [plants, setPlants] = useState(initialPlants);
+  const { user } = useContext(AuthContext);
 
   const handleDelete = (id) => {
     console.log(id);
@@ -19,7 +21,7 @@ const MyPlants = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://plant-server-side-iceeeflhw-rahmatullahs-projects-5d1688dc.vercel.app/plants/${id}`, {
+        fetch(`http://localhost:3000/plants/${id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -48,6 +50,12 @@ const MyPlants = () => {
       }
     });
   };
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/plants?email=${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setPlants(data));
+  }, [user.email]);
 
   return (
     <div>

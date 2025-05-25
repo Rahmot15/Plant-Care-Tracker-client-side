@@ -1,10 +1,13 @@
-import React, {  useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
+import { AuthContext } from "../Provider/AuthContext";
+import { auth } from "../firebase/firebase.config";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const [theme, setTheme] = useState("black");
-
+  const { user, logOut } = use(AuthContext);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -13,6 +16,16 @@ const Navbar = () => {
   const handleToggle = () => {
     const newTheme = theme === "light" ? "black" : "light";
     setTheme(newTheme);
+  };
+
+  const handleLogout = () => {
+    logOut(auth)
+      .then((result) => {
+        console.log(result);
+      })
+      .then((error) => {
+        console.log(error);
+      });
   };
 
   const link = (
@@ -91,7 +104,6 @@ const Navbar = () => {
               {link}
             </ul>
           </div>
-          
 
           <Link to={"/"} className="flex items-center">
             <img className="md:w-14 w-8" src="/logo.png" alt="" />
@@ -104,23 +116,50 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{link}</ul>
         </div>
         <div className="navbar-end space-x-3">
-          
-            
+          {user ? (
+            <div>
+              <div id="avatarTooltip" className="avatar cursor-pointer">
+                <div className="ring-primary ring-offset-base-100 w-11 rounded-full ring-2 ring-offset-2">
+                  <img src={user.photoURL} alt="User" />
+                </div>
+              </div>
+
+              {/*  */}
+              <Tooltip
+                anchorId="avatarTooltip"
+                place="bottom"
+                clickable
+                className="!max-w-xs !rounded-lg !p-4 !bg-white !text-gray-800 !shadow-lg"
+              >
+                <div className="space-y-2">
+                  <h3 className="text-xl font-semibold">{user.displayName}</h3>
+                  <p className="text-lg text-gray-600">{user.email}</p>
+                  <button
+                    onClick={handleLogout}
+                    className="inline-flex w-full items-center justify-center rounded-lg bg-green-600 md:py-2 py-2 md:px-5 px-3 font-dm text-base font-medium text-white shadow-xl shadow-green-400/30 transition-transform duration-200 ease-in-out hover:scale-[1.02]"
+                  >
+                    logOut
+                  </button>
+                </div>
+              </Tooltip>
+              {/*  */}
+            </div>
+          ) : (
             <Link
               to={"/auth/login"}
               className="inline-flex items-center justify-center rounded-lg bg-green-600 md:py-3 py-2 md:px-5 px-3 font-dm text-base font-medium text-white shadow-xl shadow-green-400/30 transition-transform duration-200 ease-in-out hover:scale-[1.02]"
             >
               Login
             </Link>
-          
+          )}
 
           {/* Theme change */}
           <div>
             <button onClick={handleToggle}>
               {theme === "black" ? (
-                <MdOutlineDarkMode size={40} className="text-black" />
+                <MdOutlineDarkMode size={45} className="text-black" />
               ) : (
-                <MdDarkMode size={40} className="text-white" />
+                <MdDarkMode size={45} className="text-white" />
               )}
             </button>
           </div>

@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { toast, ToastContainer } from "react-toastify";
 
 const Register = () => {
-  const { createUser, signInGoogle } = use(AuthContext);
+  const { createUser, signInGoogle,setUser } = use(AuthContext);
   const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
@@ -19,13 +19,15 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result);
+        const user = result.user
+        setUser(user)
         const userProfile = {
           email,
           ...restFormData,
           creationTime: result.user?.metadata?.creationTime,
           lastSignInTime: result.user?.metadata?.lastSignInTime
         }
-        fetch("https://plant-server-side-iceeeflhw-rahmatullahs-projects-5d1688dc.vercel.app/users", {
+        fetch("http://localhost:3000/users", {
 
           method: "POST",
           headers: {
@@ -58,7 +60,37 @@ const Register = () => {
     signInGoogle()
       .then((result) => {
         console.log(result);
-        navigate("/");
+        const user = result.user
+        setUser(user)
+        const userProfile = {
+          email: result.user?.email,
+          photoURL: result.user?.photoURL,
+          name: result.user?.displayName,
+          creationTime: result.user?.metadata?.creationTime,
+          lastSignInTime: result.user?.metadata?.lastSignInTime
+        }
+        fetch("http://localhost:3000/users", {
+
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userProfile),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.insertedId) {
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+            navigate("/");
+          });
       })
       .then((error) => {
         console.log(error);

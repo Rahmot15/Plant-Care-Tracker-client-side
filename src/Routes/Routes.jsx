@@ -10,6 +10,7 @@ import Register from "../Pages/Register";
 import AuthLayout from "../Layout/AuthLayout";
 import PlantsTableDetails from "../Components/PlantsTableDetails";
 import UpdatePlant from "../Pages/UpdatePlant";
+import PrivetRoute from "../Provider/PrivetRoute";
 
 export const router = createBrowserRouter([
   {
@@ -22,27 +23,31 @@ export const router = createBrowserRouter([
       },
       {
         path: "/allPlants",
-        loader: () => fetch("https://plant-server-side-iceeeflhw-rahmatullahs-projects-5d1688dc.vercel.app/plants"),
+        loader: () => fetch("http://localhost:3000/plants"),
         Component: AllPlants,
       },
       {
         path: "/addPlants",
-        Component: AddPlants,
+        element: <PrivetRoute>
+          <AddPlants></AddPlants>
+        </PrivetRoute>,
       },
       {
         path: "/myPlants",
-        loader: () => fetch("https://plant-server-side-iceeeflhw-rahmatullahs-projects-5d1688dc.vercel.app/plants"),
-        Component: MyPlants,
+        loader: () => fetch("http://localhost:3000/plants"),
+        element: <PrivetRoute>
+          <MyPlants></MyPlants>
+        </PrivetRoute>
       },
       {
         path: "/plantDetails/:id",
         loader: ({ params }) =>
-          fetch(`https://plant-server-side-iceeeflhw-rahmatullahs-projects-5d1688dc.vercel.app/plants/${params.id}`),
+          fetch(`http://localhost:3000/plants/${params.id}`),
         Component: PlantsTableDetails,
       },
       {
         path: "/updatePlant/:id",
-        loader: ({params}) => fetch(`https://plant-server-side-iceeeflhw-rahmatullahs-projects-5d1688dc.vercel.app/plants/${params.id}`),
+        loader: ({params}) => fetch(`http://localhost:3000/plants/${params.id}`),
         Component: UpdatePlant,
       },
     ],

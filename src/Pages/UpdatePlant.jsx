@@ -21,7 +21,7 @@ const UpdatePlant = () => {
     updatedPlant.lastDate = lastDate;
     updatedPlant.nextDate = nextDate;
 
-    fetch(`https://plant-server-side-iceeeflhw-rahmatullahs-projects-5d1688dc.vercel.app/plants/${plants._id}`, {
+    fetch(`http://localhost:3000/plants/${plants._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -126,7 +126,7 @@ const UpdatePlant = () => {
             />
           </div>
 
-          {/* email and password field */}
+          {/* email and name field */}
           <div className="">
             <input
               type="email"
@@ -136,11 +136,11 @@ const UpdatePlant = () => {
               placeholder="Email"
             />
             <input
-              type="password"
-              defaultValue={plants.password}
-              name="password"
+              type="name"
+              defaultValue={plants.name}
+              name="name"
               className="my-6 block w-full rounded-md border border-slate-300  px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
-              placeholder="Password"
+              placeholder="Name"
             />
           </div>
 
