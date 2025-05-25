@@ -37,7 +37,7 @@ const AddPlants = () => {
   };
 
   return (
-    <div className="relative min-h-screen pt-20 -mt-16">
+    <div className="relative min-h-screen pt-20 pb-5 -mt-16">
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{
@@ -47,9 +47,9 @@ const AddPlants = () => {
       ></div>
       <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
 
-      <div className="relative z-20 w-10/12 mx-auto  border-2 border-blue-400 rounded-lg bg-gray-900 ">
+      <div className="relative z-20 md:w-10/12 w-[96%] mx-auto  border-2 border-blue-400 rounded-lg bg-gray-900 ">
         <div className="mt-8 text-center text-4xl font-bold">Add Plants</div>
-        <form onSubmit={handleAddPlant} className="p-12">
+        <form onSubmit={handleAddPlant} className="p-3 md:p-12">
           {/* name and Health Status field  */}
           <div className="flex gap-4">
             <input
@@ -107,7 +107,7 @@ const AddPlants = () => {
           </div>
 
           {/* date field  */}
-          <div className="flex gap-4 my-6">
+          <div className="flex gap-1 md:gap-4 my-6">
             <input
               type="date"
               name="lastDate"

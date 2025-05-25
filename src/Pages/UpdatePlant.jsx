@@ -45,9 +45,9 @@ const UpdatePlant = () => {
 
   return (
     <div>
-      <div className="my-12 w-10/12 mx-auto  border-2 border-blue-400 rounded-lg bg-gray-900 ">
+      <div className="my-12 md:w-10/12 w-[96%] mx-auto  border-2 border-blue-400 rounded-lg bg-gray-900 ">
         <div className="mt-8 text-center text-4xl font-bold">Update Plants</div>
-        <form onSubmit={handleUpdatePlant} className="p-12">
+        <form onSubmit={handleUpdatePlant} className="p-3 md:p-12">
           {/* name and Health Status field  */}
           <div className="flex gap-4">
             <input
@@ -108,7 +108,7 @@ const UpdatePlant = () => {
           </div>
 
           {/* date field  */}
-          <div className="flex gap-4 my-6">
+          <div className="flex gap-1 md:gap-4 my-6">
             <input
               type="date"
               name="lastDate"

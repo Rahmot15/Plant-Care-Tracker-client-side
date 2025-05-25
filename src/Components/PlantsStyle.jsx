@@ -7,7 +7,7 @@ const PlantsStyle = () => {
     <div>
       <div className="w-11/12 mx-auto py-16 md:px-35 space-y-20 mt-24">
       {/* Section 1 */}
-      <div className="md:grid flex flex-col-reverse md:grid-cols-2 gap-10 items-center">
+      <div className="md:grid flex flex-col-reverse lg:grid-cols-2 gap-10 items-center">
         {/* Image */}
         <div className="relative">
           <img src={imageURL} alt="Office Plants" className="rounded-lg shadow-lg" />
@@ -27,7 +27,7 @@ const PlantsStyle = () => {
       </div>
 
       {/* Section 2 */}
-      <div className="grid md:grid-cols-2 gap-10 items-center">
+      <div className="grid lg:grid-cols-2 gap-10 items-center">
         {/* Text Content */}
         <div>
           <h2 className="text-4xl font-light ">

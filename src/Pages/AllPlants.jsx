@@ -12,17 +12,17 @@ const AllPlants = () => {
           {/* head */}
           <thead>
             <tr>
-              <th>No</th>
+              <th className="hidden md:block">No</th>
               <th>Name</th>
-              <th>Care level</th>
-              <th>Category</th>
+              <th className="hidden md:block">Care level</th>
+              <th className="hidden md:block">Category</th>
               <th> Details </th>
             </tr>
           </thead>
           <tbody>
             {plants.map((plant, index) => (
               <tr key={plant._id}>
-                <th>{index + 1}</th>
+                <th className="hidden md:block">{index + 1}</th>
                 <td>
                   <div className="flex items-center gap-3">
                     <div className="avatar">
@@ -42,14 +42,14 @@ const AllPlants = () => {
                     </div>
                   </div>
                 </td>
-                <td>
+                <td className="hidden md:block">
                   {plant.CareLevel}
                   <br />
                   <span className="badge badge-ghost badge-sm">
                     {plant.lastDate}
                   </span>
                 </td>
-                <td> {plant.Category} </td>
+                <td className="hidden md:block"> {plant.Category} </td>
                 <th>
                   <Link to={`/plantDetails/${plant._id}`}>
                     <button className="btn btn-info  ">View details</button>
