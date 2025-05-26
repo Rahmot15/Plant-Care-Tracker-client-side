@@ -2,9 +2,9 @@
 
 A beautiful and interactive plant management web application to help you explore, track, and purchase plants suited for your space and style.
 
-🔗 **Live Preview**: [http://localhost:5173/](http://localhost:5173/)
+🔗 **Live Preview**: [https://plants-auth-client.web.app]( https://plants-auth-client.web.app )
 
-![Screenshot of Plant Care Tracker]( https://i.ibb.co/67p2FHMJ/screencapture-localhost-5173-2025-05-26-23-26-16.png )
+![Screenshot of Plant Care Tracker]( https://i.ibb.co/35hsYTNv/screencapture-localhost-5173-2025-05-27-00-12-28.png )
 
 ---
 

@@ -1,11 +1,9 @@
-import React, {  use } from "react";
+import React, { use } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthContext";
 
 const AddPlants = () => {
   const { user } = use(AuthContext);
-
-  
 
   const handleAddPlant = (e) => {
     e.preventDefault();
@@ -31,7 +29,7 @@ const AddPlants = () => {
             draggable: true,
           });
 
-          e.target.reset()
+          e.target.reset();
         }
       });
   };
@@ -80,7 +78,6 @@ const AddPlants = () => {
           <div className="my-6 flex gap-4">
             <select
               className="block w-1/2 rounded-md border border-slate-300 px-3 py-4 font-semibold text-gray-500 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm "
-              
               name="Category"
               required
             >
@@ -93,7 +90,6 @@ const AddPlants = () => {
             </select>
             <select
               className="block w-1/2 rounded-md border border-slate-300 px-3 py-4 font-semibold text-gray-500 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm "
-              
               name="CareLevel"
               required
             >
@@ -127,14 +123,14 @@ const AddPlants = () => {
             <input
               type="email"
               name="email"
-              defaultValue={user.email}
+              value={user.email}
               className="mt-1 block w-full rounded-md border border-slate-300  px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
               placeholder="Email"
             />
             <input
               type="name"
               name="name"
-              defaultValue={user.displayName}
+              value={user.displayName}
               className="my-6 block w-full rounded-md border border-slate-300  px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
               placeholder="Name"
             />

@@ -3,7 +3,7 @@ import React from "react";
 const PurchasePlant = () => {
   return (
     <div className="w-11/12 mx-auto md:mt-30 my-12" >
-      <h1 className="ml-3 mb-6 italic text-center my-5 text-6xl  font-bold">Daily Deals </h1>
+      <h1 className="ml-3 mb-6 italic text-center my-5 text-6xl  font-bold">New Plants</h1>
       <div className=" p-6 grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 lg:gap-30 gap-6">
         {/* Rose - Flowering */}
         <div className="relative overflow-hidden bg-rose-500 rounded-lg  shadow-lg group flex flex-col">
