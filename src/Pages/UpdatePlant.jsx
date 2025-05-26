@@ -21,7 +21,7 @@ const UpdatePlant = () => {
     updatedPlant.lastDate = lastDate;
     updatedPlant.nextDate = nextDate;
 
-    fetch(`http://localhost:3000/plants/${plants._id}`, {
+    fetch(`https://plantserver.vercel.app/plants/${plants._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

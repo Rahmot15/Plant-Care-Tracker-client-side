@@ -1,12 +1,12 @@
 import React, { use } from "react";
 import { FcGoogle } from "react-icons/fc";
-import {  Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 import Swal from "sweetalert2";
 import { toast, ToastContainer } from "react-toastify";
 
 const Register = () => {
-  const { createUser, signInGoogle,setUser } = use(AuthContext);
+  const { createUser, signInGoogle, setUser } = use(AuthContext);
   const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
@@ -19,16 +19,15 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result);
-        const user = result.user
-        setUser(user)
+        const user = result.user;
+        setUser(user);
         const userProfile = {
           email,
           ...restFormData,
           creationTime: result.user?.metadata?.creationTime,
-          lastSignInTime: result.user?.metadata?.lastSignInTime
-        }
-        fetch("http://localhost:3000/users", {
-
+          lastSignInTime: result.user?.metadata?.lastSignInTime,
+        };
+        fetch("https://plantserver.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -50,9 +49,9 @@ const Register = () => {
             navigate("/");
           });
       })
-      .then((error) => {
+      .catch((error) => {
         console.log(error);
-        toast.warning("Register failed: " + error.message);
+        toast.error("Login failed: " + error.message);
       });
   };
 
@@ -60,17 +59,16 @@ const Register = () => {
     signInGoogle()
       .then((result) => {
         console.log(result);
-        const user = result.user
-        setUser(user)
+        const user = result.user;
+        setUser(user);
         const userProfile = {
           email: result.user?.email,
           photoURL: result.user?.photoURL,
           name: result.user?.displayName,
           creationTime: result.user?.metadata?.creationTime,
-          lastSignInTime: result.user?.metadata?.lastSignInTime
-        }
-        fetch("http://localhost:3000/users", {
-
+          lastSignInTime: result.user?.metadata?.lastSignInTime,
+        };
+        fetch("https://plantserver.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -209,7 +207,7 @@ const Register = () => {
                 >
                   CREATE ACCOUNT
                 </button>
-                <ToastContainer/>
+                <ToastContainer />
 
                 <h1 className="my-5 text-xl text-center">Or sign up with</h1>
 

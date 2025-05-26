@@ -6,34 +6,36 @@ const AllPlants = () => {
   console.log(plants);
 
   return (
-    <div>
-      <div className="overflow-x-auto mt-12 w-11/12 mx-auto">
-        <table className="table">
+    <div className="mt-12 w-11/12  mx-auto">
+      <div className="overflow-x-auto">
+        <table className="table ">
           {/* head */}
           <thead>
             <tr>
-              <th className="hidden md:block">No</th>
+              <th className="hidden md:table-cell">No</th>
               <th>Name</th>
-              <th className="hidden md:block">Care level</th>
-              <th className="hidden md:block">Category</th>
+              <th className="hidden md:table-cell">Care level</th>
+              <th className="">Category</th>
               <th> Details </th>
             </tr>
           </thead>
           <tbody>
             {plants.map((plant, index) => (
               <tr key={plant._id}>
-                <th className="hidden md:block">{index + 1}</th>
+                <th className="hidden md:table-cell">{index + 1}</th>
                 <td>
                   <div className="flex items-center gap-3">
                     <div className="avatar">
                       <div className="mask mask-squircle h-12 w-12">
-                        <img
-                          src={plant.PhotoUrl}
-                          alt="Avatar Tailwind CSS Component"
-                        />
+                        {plant.PhotoUrl ? (
+                          <img
+                            src={plant.PhotoUrl}
+                            alt="Avatar Tailwind CSS Component"
+                          />
+                        ) : null}
                       </div>
                     </div>
-                    <div>
+                    <div className="hidden md:table-cell">
                       <div className="font-bold"> {plant.name} </div>
                       <div className="text-sm opacity-50">
                         {" "}
@@ -42,14 +44,14 @@ const AllPlants = () => {
                     </div>
                   </div>
                 </td>
-                <td className="hidden md:block">
+                <td className="hidden md:table-cell">
                   {plant.CareLevel}
                   <br />
                   <span className="badge badge-ghost badge-sm">
                     {plant.lastDate}
                   </span>
                 </td>
-                <td className="hidden md:block"> {plant.Category} </td>
+                <td className=""> {plant.Category} </td>
                 <th>
                   <Link to={`/plantDetails/${plant._id}`}>
                     <button className="btn btn-info  ">View details</button>

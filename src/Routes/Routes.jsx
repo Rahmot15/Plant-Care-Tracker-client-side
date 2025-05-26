@@ -23,31 +23,58 @@ export const router = createBrowserRouter([
       },
       {
         path: "/allPlants",
-        loader: () => fetch("http://localhost:3000/plants"),
+        hydrateFallbackElement: (
+          <p className="text-center mt-10">
+            <span className="loading  loading-dots loading-xl"></span>
+          </p>
+        ),
+        loader: () => fetch("https://plantserver.vercel.app/plants"),
         Component: AllPlants,
       },
       {
         path: "/addPlants",
-        element: <PrivetRoute>
-          <AddPlants></AddPlants>
-        </PrivetRoute>,
+        element: (
+          <PrivetRoute>
+            <AddPlants></AddPlants>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/myPlants",
-        loader: () => fetch("http://localhost:3000/plants"),
-        element: <PrivetRoute>
-          <MyPlants></MyPlants>
-        </PrivetRoute>
+        hydrateFallbackElement: (
+          <p className="text-center mt-10">
+            <span className="loading  loading-dots loading-xl"></span>
+          </p>
+        ),
+
+        loader: () => fetch("https://plantserver.vercel.app/plants"),
+        element: (
+          <PrivetRoute>
+            <MyPlants></MyPlants>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/plantDetails/:id",
+        hydrateFallbackElement: (
+          <p className="text-center mt-10">
+            <span className="loading  loading-dots loading-xl"></span>
+          </p>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/plants/${params.id}`),
+          fetch(`https://plantserver.vercel.app/plants/${params.id}`),
         Component: PlantsTableDetails,
       },
       {
         path: "/updatePlant/:id",
-        loader: ({params}) => fetch(`http://localhost:3000/plants/${params.id}`),
+        hydrateFallbackElement: (
+          <p className="text-center mt-10">
+            <span className="loading  loading-dots loading-xl"></span>
+          </p>
+        ),
+
+        loader: ({ params }) =>
+          fetch(`https://plantserver.vercel.app/plants/${params.id}`),
         Component: UpdatePlant,
       },
     ],

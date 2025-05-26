@@ -21,7 +21,7 @@ const MyPlants = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/plants/${id}`, {
+        fetch(`https://plantserver.vercel.app/plants/${id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -52,7 +52,7 @@ const MyPlants = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:3000/plants?email=${user.email}`)
+    fetch(`https://plantserver.vercel.app/plants?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setPlants(data));
   }, [user.email]);
@@ -64,25 +64,27 @@ const MyPlants = () => {
           {/* head */}
           <thead>
             <tr>
-              <th className="hidden md:block">No</th>
+              <th className="hidden md:table-cell">No</th>
               <th>Name</th>
-              <th className="hidden md:block">Care level</th>
-              <th className="hidden md:block">Category</th>
+              <th className="hidden md:table-cell">Care level</th>
+              <th className="hidden md:table-cell">Category</th>
               <th> Auction </th>
             </tr>
           </thead>
           <tbody>
             {plants.map((plant, index) => (
               <tr key={plant._id}>
-                <th className="hidden md:block">{index + 1}</th>
+                <th className="hidden md:table-cell">{index + 1}</th>
                 <td>
                   <div className="flex items-center gap-3">
                     <div className="avatar">
                       <div className="mask mask-squircle h-12 w-12">
-                        <img
-                          src={plant.PhotoUrl}
-                          alt="Avatar Tailwind CSS Component"
-                        />
+                        {plant.PhotoUrl ? (
+                          <img
+                            src={plant.PhotoUrl}
+                            alt="Avatar Tailwind CSS Component"
+                          />
+                        ) : null}
                       </div>
                     </div>
                     <div>
@@ -94,16 +96,16 @@ const MyPlants = () => {
                     </div>
                   </div>
                 </td>
-                <td className="hidden md:block">
+                <td className="hidden md:table-cell">
                   {plant.CareLevel}
                   <br />
                   <span className="badge badge-ghost badge-sm">
                     {plant.lastDate}
                   </span>
                 </td>
-                <td className="hidden md:block"> {plant.Category} </td>
+                <td className="hidden md:table-cell"> {plant.Category} </td>
                 <th>
-                  <div className="card-actions  gap-3">
+                  <div className="card-actions gap-3">
                     <Link to={`/updatePlant/${plant._id}`}>
                       <button className="btn  btn-primary">
                         <MdEdit size={20} />

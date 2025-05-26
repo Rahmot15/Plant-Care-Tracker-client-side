@@ -14,7 +14,7 @@ const AddPlants = () => {
     newPlant.email = user.email;
     console.log(newPlant);
 
-    fetch("http://localhost:3000/plants", {
+    fetch("https://plantserver.vercel.app/plants", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
