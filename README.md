@@ -101,8 +101,7 @@ Before you begin, ensure you have the following installed:
 ## 🔗 Other Resources
 
 *   **Live Frontend Application:** [Plants - Plant Care Tracker Live Site](https://plants-auth-client.web.app)
-*   **Firebase Project Console:** [Link to your Firebase Project Console (Optional)](YOUR_FIREBASE_CONSOLE_URL)
-    *   *If you want to provide access to your Firebase project for other developers/collaborators, include this link here. Replace `YOUR_FIREBASE_CONSOLE_URL`.*
+
 *   **API Documentation:** [Link to any API Documentation (e.g., if you have Firebase Cloud Functions with specific endpoints)](https://plantserver.vercel.app/)
     *   *If you don't have separate API documentation, you can remove this line. Replace `YOUR_API_DOCS_URL`.*
 
