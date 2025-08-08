@@ -47,17 +47,69 @@ A beautiful and interactive plant management web application to help you explore
 
 ---
 
+## ⚙️ How to Run Locally
 
+Follow these steps to set up and run the project on your local machine.
 
-# React + Vite
+### Prerequisites
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Before you begin, ensure you have the following installed:
+*   [Node.js](https://nodejs.org/en/download/) (LTS version recommended)
+*   [npm](https://www.npmjs.com/get-npm) (Node Package Manager, usually comes with Node.js) or [Yarn](https://yarnpkg.com/getting-started/install)
 
-Currently, two official plugins are available:
+### Setup Steps
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/Rahmat15/Plant-Care-Tracker-client-side.git
+    ```
+2.  **Navigate into the project directory:**
+    ```bash
+    cd Plant-Care-Tracker-client-side
+    ```
+3.  **Install dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+4.  **Create a `.env` file:**
+    In the root of your project directory, create a file named `.env` and add your Firebase configuration details. Replace the placeholder values with your actual credentials obtained from your Firebase project settings.
 
-## Expanding the ESLint configuration
+    ```
+    # Firebase Configuration
+    VITE_FIREBASE_API_KEY=YOUR_FIREBASE_API_KEY
+    VITE_FIREBASE_AUTH_DOMAIN=YOUR_FIREBASE_AUTH_DOMAIN
+    VITE_FIREBASE_PROJECT_ID=YOUR_FIREBASE_PROJECT_ID
+    VITE_FIREBASE_STORAGE_BUCKET=YOUR_FIREBASE_STORAGE_BUCKET
+    VITE_FIREBASE_MESSAGING_SENDER_ID=YOUR_FIREBASE_MESSAGING_SENDER_ID
+    VITE_FIREBASE_APP_ID=YOUR_FIREBASE_APP_ID
+    VITE_FIREBASE_MEASUREMENT_ID=YOUR_FIREBASE_MEASUREMENT_ID
+    ```
+    *Note: If your project interacts with any other external APIs, include those environment variables here as well.*
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+5.  **Run the development server:**
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
+    The application should now be running locally, usually accessible at `http://localhost:5173`.
+
+---
+
+## 🔗 Other Resources
+
+*   **Live Frontend Application:** [Plants - Plant Care Tracker Live Site](https://plants-auth-client.web.app)
+*   **Firebase Project Console:** [Link to your Firebase Project Console (Optional)](YOUR_FIREBASE_CONSOLE_URL)
+    *   *If you want to provide access to your Firebase project for other developers/collaborators, include this link here. Replace `YOUR_FIREBASE_CONSOLE_URL`.*
+*   **API Documentation:** [Link to any API Documentation (e.g., if you have Firebase Cloud Functions with specific endpoints)](YOUR_API_DOCS_URL)
+    *   *If you don't have separate API documentation, you can remove this line. Replace `YOUR_API_DOCS_URL`.*
+
+---
+
+## 🙌 Credits
+Designed & developed by Md Rahmatulla
+
+## 📜 License
+This project is licensed for personal and educational use.
